@@ -1,6 +1,75 @@
 <!doctype html>
 
 <html lang="en">
+    <!-- Example from your index.html -->
+<head>
+ <!-- Example Only: Insert this in your <head> -->
+<style>
+    [aria-label="Open Framer Menu"],
+    [data-framer-component-type="NavigationToggle"],
+    .framer-navigation-toggle, 
+    .framer-badge {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+    }
+    .FramerFloatingEditingFramerButton {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+    }
+  </style>
+  <script>
+    // Example Only: Forces style on mutation
+    const removeFramerElements = () => {
+      const targets = document.querySelectorAll(
+        '[aria-label="Open Framer Menu"], [data-framer-component-type="NavigationToggle"], .framer-navigation-toggle, .framer-badge'
+      );
+      targets.forEach((el) => {
+        el.style.display = "none";
+        el.style.visibility = "hidden";
+        el.style.opacity = "0";
+        el.style.pointerEvents = "none";
+        el.style.height = "0";
+        el.style.width = "0";
+        el.style.overflow = "hidden";
+        el.style.position = "absolute";
+        el.style.top = "-9999px";
+        el.style.left = "-9999px";
+      });
+    };
+    const observer = new MutationObserver(() => {
+      removeFramerElements();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('load', removeFramerElements);
+  <script>
+    // Remove FramerFloatingEditingFramerButton if it is dynamically inserted
+    const removeEditingButton = () => {
+      const editingButton = document.querySelector(".FramerFloatingEditingFramerButton");
+      if (editingButton) {
+        editingButton.remove();
+      }
+    };
+    new MutationObserver(removeEditingButton).observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("load", removeEditingButton);
+  </script>
+  </script>
+  </head>
 <head>
     <meta charset="utf-8">
     
@@ -35,7 +104,8 @@
     
 </head>
 <body>
-    <script async src="https://events.framer.com/script?v=1" data-fid="35a93a3cadf9418d9c0b7e01056b4a17bb23d8c06dff659778e44988a28cb686" data-no-nt></script>
+    <!-- <script async src="https://events.framer.com/script?v=1" data-fid="35a93a3cadf9418d9c0b7e01056b4a17bb23d8c06dff659778e44988a28cb686" data-no-nt></script>-->
+   
     
     
     
